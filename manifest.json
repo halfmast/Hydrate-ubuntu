@@ -1,0 +1,15 @@
+{
+    "architecture": "all",
+    "description": "A simple daily water intake tracker",
+    "framework": "ubuntu-sdk-14.10-qml-dev3",
+    "hooks": {
+        "Hydrate": {
+            "apparmor": "Hydrate.json",
+            "desktop": "Hydrate.desktop"
+        }
+    },
+    "maintainer": "Kevin Feyder <kevinfeyder@gmail.com>",
+    "name": "com.ubuntu.developer.kevinfeyder.hydrate",
+    "title": "Hydrate",
+    "version": "0.8.4"
+}

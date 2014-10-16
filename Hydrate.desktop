@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hydrate
+Comment=A simple daily water intake tracker
+Exec=qmlscene $@ Hydrate.qml
+Icon=hydrate-app.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
