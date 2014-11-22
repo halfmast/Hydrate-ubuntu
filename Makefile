@@ -18,4 +18,5 @@ check:
 	qmltestrunner -input tests/unit
 
 run:
-	/usr/bin/qmlscene $@ Hydrate.qml
+	/usr/bin/qmlscene $@ drops.qml
+

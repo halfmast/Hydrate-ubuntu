@@ -1,9 +1,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 0.1
-import "../components"
-
-//dialog for add water
+import "../backend/script.js" as Logic
 
 Component {
         id: dialogComponent
@@ -11,83 +9,79 @@ Component {
             id: dialog
             title: "Add Water"
             text: i18n.tr("How much water did you consume?")
+            Item{
+                id:current
+                property int holder: 0
+            }
 
             Button {
-                id: one
-                states: State{
-                    when: number_doc.contents.metric === true
-                        PropertyChanges {
-                            target:one; text: i18n.tr("300 mL")}
-                    }
-
-                text: i18n.tr("8 Oz")
+                text: userSettings.contents.metrics === 1 ? "300 mL": "8 Oz"
                 color: "#8DD9D9"
                 onClicked:{
+                    current.holder = userProgress.contents.current;
+                    userProgress.contents = {current: Logic.addWater(300, 8, userSettings.contents.metrics, current.holder),weight: userProgress.contents.weight,
+                        level: userProgress.contents.level, needed: userProgress.contents.needed}
+                    userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
+                        weight: userProgress.contents.weight, needed: userProgress.contents.needed}
                     PopupUtils.close(dialog);
-                    math.addwater(8,300);
                 }
             }
 
             Button {
-                id: sec
-                states: State{
-                    when: number_doc.contents.metric === true
-                    PropertyChanges {target:sec; text: i18n.tr("400 mL")}
-                }
-                text: i18n.tr("12 Oz")
+                text: userSettings.contents.metrics === 1 ? "400mL": "12 Oz"
                 color: "#7FCCD2"
                 onClicked:{
-                 PopupUtils.close(dialog);
-                 math.addwater(12,400);
-                 convert.liter
+                    current.holder = userProgress.contents.current;
+                    userProgress.contents = {current: Logic.addWater(400, 12, userSettings.contents.metrics, current.holder),weight: userProgress.contents.weight,
+                        level: userProgress.contents.level, needed: userProgress.contents.needed}
+                    userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
+                        weight: userProgress.contents.weight, needed: userProgress.contents.needed}
+                    PopupUtils.close(dialog);
                 }
                     }
 
             Button {
-                id: third
-                states: State{
-                    when: number_doc.contents.metric === true
-                    PropertyChanges {target:third; text: i18n.tr("500 mL")}
-                }
-                text: i18n.tr("16 Oz")
+                text: userSettings.contents.metrics === 1 ? "500 mL": "16 Oz"
                 color: "#72BFCC"
                 onClicked:{
+                    current.holder = userProgress.contents.current;
+                    userProgress.contents = {current: Logic.addWater(500, 16, userSettings.contents.metrics, current.holder),weight: userProgress.contents.weight,
+                        level: userProgress.contents.level, needed: userProgress.contents.needed}
+                    userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
+                        weight: userProgress.contents.weight, needed: userProgress.contents.needed}
                     PopupUtils.close(dialog);
-                    math.addwater(16,500);
                 }
                     }
 
             Button {
-                id: four
-                states: State{
-                    when: number_doc.contents.metric === true
-                    PropertyChanges {target:four; text: i18n.tr("600 mL")}
-                }
-                text: i18n.tr("20 Oz")
+                text: userSettings.contents.metrics === 1 ? "600 mL": "20 Oz"
                 color:"#64B2C5"
                 onClicked:{
+                    current.holder = userProgress.contents.current;
+                    userProgress.contents = {current: Logic.addWater(600, 20, userSettings.contents.metrics, current.holder),weight: userProgress.contents.weight,
+                        level: userProgress.contents.level, needed: userProgress.contents.needed}
+                    userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
+                        weight: userProgress.contents.weight, needed: userProgress.contents.needed}
                     PopupUtils.close(dialog);
-                    math.addwater(20,600);
                 }
-                    }
+            }
 
             Button {
-                id: five
-                states: State{
-                    when: number_doc.contents.metric === true
-                    PropertyChanges {target:five; text: i18n.tr("700 mL")}
-                }
-                text: i18n.tr("24 Oz")
-                color:"#57A5BF"
+                text: userSettings.contents.metrics === 1 ? "700 mL": "24 Oz"
+                color:"#57a5bf"
                 onClicked:{
+                    current.holder = userProgress.contents.current;
+                    userProgress.contents = {current: Logic.addWater(700, 24, userSettings.contents.metrics, current.holder),weight: userProgress.contents.weight,
+                        level: userProgress.contents.level, needed: userProgress.contents.needed}
+                    userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
+                        weight: userProgress.contents.weight, needed: userProgress.contents.needed}
                     PopupUtils.close(dialog);
-                    math.addwater(24,700);
                 }
-                   }
+            }
 
        Button {
            text: i18n.tr("Cancel")
-            color:"#dd4814"
+            //color:"#dd4814"
             onClicked:{ PopupUtils.close(dialog) }
                }
 }

@@ -14,7 +14,7 @@
    height="150"
    id="svg3015"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="slimdrop.svg">
   <defs
      id="defs3017">
@@ -79,7 +79,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="66.115398"
+     inkscape:cx="21.542417"
      inkscape:cy="76.335859"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -88,10 +88,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1301"
-     inkscape:window-height="744"
+     inkscape:window-width="1375"
+     inkscape:window-height="876"
      inkscape:window-x="65"
-     inkscape:window-y="166"
+     inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -111,7 +111,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -122,7 +122,7 @@
      transform="translate(-334.3661,-240.40122)">
     <path
        d="m 455.70418,335.49225 c 0,27.80632 -22.64287,50.40899 -50.4291,50.40899 -27.8264,0 -50.40898,-22.60267 -50.40898,-50.40899 0,-18.98626 27.76612,-58.66652 50.40898,-85.85001 22.5826,27.14331 50.4291,66.82356 50.4291,85.85001 z"
-       style="fill:none;stroke:#717073;stroke-width:8;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:none;marker-mid:none"
+       style="fill:none;stroke:#4d4d4d;stroke-width:8;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:none;marker-mid:none"
        id="path396"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ssscs" />
