@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hydrate
+Exec=qmlscene $@ main.qml
+Icon=hydrate-app.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+
