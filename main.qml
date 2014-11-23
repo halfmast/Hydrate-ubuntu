@@ -34,6 +34,31 @@ MainView {
       defaults: { "metrics": 1, "day": 0, "goals": 0 }
     }
 
+    Item {
+        Timer {
+            interval: 500; running: true; repeat: true
+            onTriggered:{ check.day(); }
+        }
+    }
+
+    Item {
+    id: check
+    //check date and resets app
+        function day() {
+            var d = new Date();
+            var n = d.getDate();
+            if (userSettings.contents.day === n) {
+                //nothing happens
+            } else if ( userSettings.contents.day === 0 ) {
+                userSettings.contents = {day: n};
+            } else {
+                userSettings.contents = {day: n};
+                userProgress.contents = {current: 0, weight:userProgress.contents.weight, level: 0, needed: userProgress.contents.needed}
+                userSettings.contents = { "metrics": userSettings.contents.metrics, "day": userSettings.contents.day, "goals": userSettings.contents.goals }
+            }
+        }
+    }
+
 
     PageStack{
         id:stack
