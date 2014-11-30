@@ -35,6 +35,21 @@ MainView {
     }
 
     Item {
+        id:cartoon
+        states: State {
+            name: "anime"
+            AnchorChanges { target: ui; anchors.bottom: parent.bottom }
+        }
+
+        transitions: Transition {
+            ParallelAnimation {
+            AnchorAnimation { easing.type:Easing.OutQuart; duration: 600}
+            NumberAnimation  { target:ui; property: "opacity"; to: .8; duration: 900 }
+            }}
+        Component.onCompleted: cartoon.state = "anime";
+        }
+
+    Item {
         Timer {
             interval: 500; running: true; repeat: true
             onTriggered:{ check.day(); }
@@ -74,6 +89,8 @@ MainView {
             }
             ButtonComponent{
                 id:ui
+                opacity: 0;
+                anchors.verticalCenter: parent;
             }
             Rectangle {
                 id:waterLvl

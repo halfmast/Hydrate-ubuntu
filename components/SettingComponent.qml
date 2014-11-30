@@ -77,7 +77,7 @@ Page {
 
                             Label {
                                 id:calText
-                                text: "Set water goal by"
+                                text: "unit index " + unitOption.selectedIndex + "goal " + goalOption.selectedIndex//"Set water goal by"
                             }
                              OptionSelector {
                                     id:goalOption
@@ -85,7 +85,7 @@ Page {
                                     model: [i18n.tr("Use Weight"),i18n.tr("Set Goal")]
                                     onSelectedIndexChanged:{
                                         weightText.placeholderText = Logic.placeLorem(unitOption.selectedIndex, goalOption.selectedIndex)
-                                        console.log("goal: " + goalOption.selectedIndex)
+                                        //console.log("goal: " + goalOption.selectedIndex)
                                     }
                              }
                             TextField {

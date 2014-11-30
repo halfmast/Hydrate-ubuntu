@@ -11,7 +11,7 @@ Item{
     id: label
     objectName: "label"
     radius: "medium"
-    opacity: .8
+    //opacity: .8
     color: "#efefef"
     width: units.gu(19)
     height: units.gu(19)
@@ -76,7 +76,7 @@ Item{
         width: units.gu(15)
         height: units.gu(15)
         color: "#efefef"
-        opacity: .8
+        //opacity: .8
         radius: "medium"
         anchors{
             bottom:parent.bottom; bottomMargin: units.gu(2);
