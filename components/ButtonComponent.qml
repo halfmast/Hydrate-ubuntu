@@ -97,7 +97,7 @@ Item{
                 id:glassLabel
                 fontSize:"small"
                 font.weight: Font.Bold;
-                text:i18n.tr("Add Water")
+                text:"metrics "+userSettings.contents.metrics+ " goals "+ userSettings.contents.goals//i18n.tr("Add Water")
                 anchors{
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.bottom; bottomMargin: units.gu(1)}

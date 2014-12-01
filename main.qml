@@ -43,7 +43,7 @@ MainView {
 
         transitions: Transition {
             ParallelAnimation {
-            AnchorAnimation { easing.type:Easing.OutQuart; duration: 600}
+            AnchorAnimation { easing.type:Easing.OutQuart; duration: 400}
             NumberAnimation  { target:ui; property: "opacity"; to: .8; duration: 900 }
             }}
         Component.onCompleted: cartoon.state = "anime";
@@ -65,11 +65,11 @@ MainView {
             if (userSettings.contents.day === n) {
                 //nothing happens
             } else if ( userSettings.contents.day === 0 ) {
-                userSettings.contents = {day: n};
+                userSettings.contents = {"metrics": userSettings.contents.metrics, "day": n, "goals": userSettings.contents.goals};
             } else {
-                userSettings.contents = {day: n};
+                //userSettings.contents = {day: n};
                 userProgress.contents = {current: 0, weight:userProgress.contents.weight, level: 0, needed: userProgress.contents.needed}
-                userSettings.contents = { "metrics": userSettings.contents.metrics, "day": userSettings.contents.day, "goals": userSettings.contents.goals }
+                userSettings.contents = { "metrics": userSettings.contents.metrics, "day": n, "goals": userSettings.contents.goals }
             }
         }
     }
@@ -86,11 +86,17 @@ MainView {
             head.actions: Action {
                 iconName: "settings"
                 onTriggered: stack.push(settings);
+
             }
+            Button{
+                text:"reset";
+                onClicked:userSettings.contents={metrics:0, day:0, goals:0};
+            }
+
             ButtonComponent{
                 id:ui
                 opacity: 0;
-                anchors.verticalCenter: parent;
+                //anchors.verticalCenter: parent.height;
             }
             Rectangle {
                 id:waterLvl

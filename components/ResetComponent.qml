@@ -17,7 +17,7 @@ Component {
                  color: "#57a5bf"
                  onClicked: {
                      userProgress.contents = {current: 0, weight:userProgress.contents.weight, level: 0, needed: userProgress.contents.needed, mL: 0}
-                     userSettings.contents = { "metrics": userSettings.contents.metrics, "day": 0, "goals": userSettings.contents.goals }
+                     userSettings.contents = { metrics:userSettings.contents.metrics, "day": 0, "goals": 1 }
                      PopupUtils.close(resetDialog)
                      stack.pop(home)
                      //start.startupFunction()
@@ -25,7 +25,7 @@ Component {
              }
              Button {
                  id: cancel
-                 text: 'Cancel'
+                 text: "Cancel"
                  onClicked: {PopupUtils.close(resetDialog)}
              }
          }
