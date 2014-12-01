@@ -4,38 +4,37 @@ import Ubuntu.Components.Popups 0.1
 import "../backend/script.js" as Logic
 
 Item{
-    height:parent.height - units.gu(2)
+    height:parent.height - units.gu(1.5)
     width:parent.width
 
-    UbuntuShape {
-    id: label
-    objectName: "label"
-    radius: "medium"
-    //opacity: .8
-    color: "#efefef"
-    width: units.gu(19)
-    height: units.gu(19)
+        UbuntuShape {
+            id: label
+            objectName: "label"
+            radius: "medium"
+            color: "#efefef"
+            width: units.gu(19)
+            height: units.gu(19)
 
-    anchors{
-        top:parent.top; topMargin: units.gu(2);
-        horizontalCenter: parent.horizontalCenter
-    }
+                anchors{
+                    top:parent.top; topMargin: units.gu(2);
+                    horizontalCenter: parent.horizontalCenter
+                }
 
     Column {
             id:topsquare
-            anchors{
-                centerIn: parent;
-            }
             spacing: units.gu(1.5)
+                anchors{
+                    centerIn: parent;
+                }
 
         Label {
             id:percentInfo
             font.pixelSize: label.height*0.4
             font.weight: Font.Light;
             text: Logic.percentage(userProgress.contents.current,userProgress.contents.needed) + "%"
-            anchors{
-                horizontalCenter: parent.horizontalCenter
-            }
+                anchors{
+                    horizontalCenter: parent.horizontalCenter
+                }
         }
 
         Item{
@@ -76,31 +75,31 @@ Item{
         width: units.gu(15)
         height: units.gu(15)
         color: "#efefef"
-        //opacity: .8
         radius: "medium"
-        anchors{
-            bottom:parent.bottom; bottomMargin: units.gu(2);
-            horizontalCenter: parent.horizontalCenter
-        }
+            anchors{
+                bottom:parent.bottom; bottomMargin: units.gu(2);
+                horizontalCenter: parent.horizontalCenter
+            }
 
             Image {
                 smooth: true
                 width: units.gu(10)
                 height: units.gu(10)
-                anchors{
-                top: mousearea1.top; topMargin:units.gu(1)
-                horizontalCenter: mousearea1.horizontalCenter}
-                source: Qt.resolvedUrl("../graphics/slimdrop.svg")
-                  }
+                    anchors{
+                        top: mousearea1.top; topMargin:units.gu(1)
+                        horizontalCenter: mousearea1.horizontalCenter}
+                        source: Qt.resolvedUrl("../graphics/slimdrop.svg")
+                      }
 
            Label {
                 id:glassLabel
                 fontSize:"small"
                 font.weight: Font.Bold;
                 text:"metrics "+userSettings.contents.metrics+ " goals "+ userSettings.contents.goals//i18n.tr("Add Water")
-                anchors{
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.bottom; bottomMargin: units.gu(1)}
+                    anchors{
+                        horizontalCenter: parent.horizontalCenter
+                        bottom: parent.bottom; bottomMargin: units.gu(2)
+                    }
            }
 
             MouseArea {

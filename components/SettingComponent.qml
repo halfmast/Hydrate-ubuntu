@@ -48,8 +48,8 @@ Page {
                     width:parent.width
                     showDivider: false
                     Column{
-                    anchors.fill:parent
-                    spacing: units.gu(2)
+                        anchors.fill:parent
+                        spacing: units.gu(2)
 
                         Label {
                             id:userText

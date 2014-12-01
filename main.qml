@@ -38,12 +38,12 @@ MainView {
         id:cartoon
         states: State {
             name: "anime"
-            AnchorChanges { target: ui; anchors.bottom: parent.bottom }
+            AnchorChanges { target: ui; anchors.bottom: parent.bottom}//anchors.verticalCenter: parent.verticalCenter}
         }
 
         transitions: Transition {
             ParallelAnimation {
-            AnchorAnimation { easing.type:Easing.OutQuart; duration: 400}
+            AnchorAnimation { easing.type:Easing.OutQuart; duration: 1000}
             NumberAnimation  { target:ui; property: "opacity"; to: .8; duration: 900 }
             }}
         Component.onCompleted: cartoon.state = "anime";
@@ -88,15 +88,11 @@ MainView {
                 onTriggered: stack.push(settings);
 
             }
-            Button{
-                text:"reset";
-                onClicked:userSettings.contents={metrics:0, day:0, goals:0};
-            }
 
             ButtonComponent{
                 id:ui
                 opacity: 0;
-                //anchors.verticalCenter: parent.height;
+                //anchors.top: parent.top;
             }
             Rectangle {
                 id:waterLvl
