@@ -1,7 +1,7 @@
-function jsFunction() {
-    return "Called JavaScript function!";
-}
 
+//----Main Page----//
+
+//generates the percentage on the top square
 function percentage(current,needed) {
     return Math.round((current / needed) * 100);
 }
@@ -19,6 +19,7 @@ function text(current, needed, metrics) {
         return current + " Oz / " + needed + " Oz";}
 }
 
+//adds water to current amount
 function addWater(met, imp, metrics, current){
     if(metrics === 1){
         //current = Math.round(current + ( met / 29.5735));
@@ -30,7 +31,7 @@ function addWater(met, imp, metrics, current){
     }
 
 }
-
+//water lvl height
 function lvl(current, need, lvl){
     console.log("pre" + lvl)
     if (lvl <= 100 && current === 0) {
@@ -62,6 +63,8 @@ function lorem(unit, goal, weight){
         return weight + " pounds"
     }
 }
+
+//setting page text
 function placeLorem(index, goal){
     if(index === 1 && goal === 0){
         //metrics and goal off
