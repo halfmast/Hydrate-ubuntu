@@ -4,108 +4,76 @@ import Ubuntu.Components.Popups 0.1
 import "../backend/script.js" as Logic
 
 Item{
-    height:parent.height - units.gu(1.5)
+    height:parent.height //- units.gu(2)
     width:parent.width
 
-        UbuntuShape {
-            id: label
-            objectName: "label"
-            radius: "medium"
-            color: "#efefef"
-            width: units.gu(19)
-            height: units.gu(19)
-
-                anchors{
-                    top:parent.top; topMargin: units.gu(2);
-                    horizontalCenter: parent.horizontalCenter
-                }
-
-    Column {
-            id:topsquare
-            spacing: units.gu(1.5)
-                anchors{
-                    centerIn: parent;
-                }
-
-        Label {
-            id:percentInfo
-            font.pixelSize: label.height*0.4
-            font.weight: Font.Light;
-            text: Logic.percentage(userProgress.contents.current,userProgress.contents.needed) + "%"
-                anchors{
-                    horizontalCenter: parent.horizontalCenter
-                }
+    UbuntuShape {
+        id: label
+        radius: "medium"
+        color: "#efefef"
+        width: units.gu(17)
+        height: units.gu(17)
+        anchors{
+            top:parent.top; topMargin: units.gu(4)
+            horizontalCenter: parent.horizontalCenter
         }
 
-        Item{
-        id:recHold
-        width:parent.width
-        height:progressInfo.height + waterLabel.height
-
-            Column{
-                spacing: units.gu(1)
-                width:parent.width
-                height:progressInfo.height + waterLabel.height
-                Label {
-                  id:progressInfo
-                  fontSize:"medium"
-                  anchors{
-                      horizontalCenter: parent.horizontalCenter
-                  }
-                  text:Logic.text(userProgress.contents.current,userProgress.contents.needed, userSettings.contents.metrics)
-                }
-
-                Label {
-                  id:waterLabel
-                  fontSize:"small"
-                  font.weight: Font.Bold;
-                  anchors{
-                      horizontalCenter: parent.horizontalCenter
-                  }
-                  text:"today";
-                }
+        Column {
+            id:topsquare;
+            spacing: units.gu(1);
+                anchors.centerIn: parent;
+            Label {
+                //percentage text
+                font.pixelSize: label.height*0.36
+                text: Logic.percentage(userProgress.contents.current,userProgress.contents.needed) + "%"
+                anchors.horizontalCenter: parent.horizontalCenter
             }
-        }
-    }//end of column
+            Label {
+                //progress infomation text
+                fontSize:"small"
+                anchors.horizontalCenter: parent.horizontalCenter
+                text:Logic.text(userProgress.contents.current,userProgress.contents.needed, userSettings.contents.metrics)
+            }
+
+        }//end of column
 
     }//end of ubuntu shape
 
     UbuntuShape {
-        id: addwater
         width: units.gu(15)
         height: units.gu(15)
         color: "#efefef"
         radius: "medium"
             anchors{
-                bottom:parent.bottom; bottomMargin: units.gu(2);
+                bottom:parent.bottom; bottomMargin: units.gu(4);
                 horizontalCenter: parent.horizontalCenter
             }
-
-            Image {
-                smooth: true
-                width: units.gu(10)
-                height: units.gu(10)
+            Column{
+                spacing: units.gu(1)
                     anchors{
-                        top: mousearea1.top; topMargin:units.gu(1)
-                        horizontalCenter: mousearea1.horizontalCenter}
-                        source: Qt.resolvedUrl("../graphics/slimdrop.svg")
-                      }
-
-           Label {
-                id:glassLabel
-                fontSize:"small"
-                font.weight: Font.Bold;
-                text:"metrics "+userSettings.contents.metrics+ " goals "+ userSettings.contents.goals//i18n.tr("Add Water")
-                    anchors{
-                        horizontalCenter: parent.horizontalCenter
-                        bottom: parent.bottom; bottomMargin: units.gu(2)
+                        centerIn: parent
+                        margins: units.gu(1)
                     }
-           }
-
+                Image {
+                    //water drop image
+                    smooth: true
+                    width: units.gu(10)
+                    height: width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    source: Qt.resolvedUrl("../graphics/slimdrop.svg")
+                }
+               Label {
+                    // add water text
+                    fontSize:"small"
+                    text:i18n.tr("Add Water")
+                    anchors.horizontalCenter: parent.horizontalCenter
+              }
+          }// end of column
             MouseArea {
-                id: mousearea1
+                id: mousearea
                 anchors.fill:parent
                 onClicked: PopupUtils.open((buttons))
             }
     }//end of ubuntushape
+
 }//end of item
