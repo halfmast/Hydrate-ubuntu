@@ -4,19 +4,22 @@ import Ubuntu.Components.Popups 0.1
 import "../backend/script.js" as Logic
 
 Item{
-    height:parent.height //- units.gu(2)
+    height:parent.height
     width:parent.width
 
-    UbuntuShape {
+    Rectangle {
         id: label
-        radius: "medium"
-        color: "#efefef"
+        z:1
+        radius: units.gu(2)
+        color: "#ffffff"
         width: units.gu(17)
         height: units.gu(17)
         anchors{
             top:parent.top; topMargin: units.gu(4)
             horizontalCenter: parent.horizontalCenter
         }
+        border.width:units.gu(.2)
+        border.color: "#e0e6ed"
 
         Column {
             id:topsquare;
@@ -39,15 +42,19 @@ Item{
 
     }//end of ubuntu shape
 
-    UbuntuShape {
+    Rectangle {
+        id:label2
+        z:1
         width: units.gu(15)
         height: units.gu(15)
-        color: "#efefef"
-        radius: "medium"
+        color: "#ffffff"
+        radius: units.gu(2)
             anchors{
                 bottom:parent.bottom; bottomMargin: units.gu(4);
                 horizontalCenter: parent.horizontalCenter
             }
+            border.width:units.gu(.2)
+            border.color: "#e0e6ed"
             Column{
                 spacing: units.gu(1)
                     anchors{
@@ -75,5 +82,6 @@ Item{
                 onClicked: PopupUtils.open((buttons))
             }
     }//end of ubuntushape
+
 
 }//end of item

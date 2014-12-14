@@ -10,6 +10,7 @@ MainView {
     objectName: "mainView"
     applicationName: "com.ubuntu.developer.kevinfeyder.drops"
     useDeprecatedToolbar: false
+    backgroundColor: "#f9f9f9"
     width: units.gu(45)
     height: units.gu(75)
 
@@ -38,7 +39,7 @@ MainView {
         id:cartoon
         states: State {
             name: "anime"
-            AnchorChanges { target: ui; anchors.bottom: parent.bottom}//anchors.verticalCenter: parent.verticalCenter}
+            AnchorChanges { target: ui; anchors.bottom: parent.bottom}
         }
 
         transitions: Transition {
