@@ -18,8 +18,9 @@ Item{
             top:parent.top; topMargin: units.gu(4)
             horizontalCenter: parent.horizontalCenter
         }
-        border.width:units.gu(.2)
+        border.width:units.gu(.1)
         border.color: "#e0e6ed"
+        //border.gradient:"#e0e6ed"
 
         Column {
             id:topsquare;
@@ -53,7 +54,7 @@ Item{
                 bottom:parent.bottom; bottomMargin: units.gu(4);
                 horizontalCenter: parent.horizontalCenter
             }
-            border.width:units.gu(.2)
+            border.width:units.gu(.1)
             border.color: "#e0e6ed"
             Column{
                 spacing: units.gu(1)

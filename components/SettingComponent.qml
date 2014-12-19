@@ -96,9 +96,17 @@ Page {
                         }
                     }
                     ListItem.Standard {
+                        text: "Clear history"
+                        onClicked: (PopupUtils.open(log))
+                        progression: true
+                    }
+                    ListItem.Standard {
                         text: "Reset current progress"
                         onClicked: (PopupUtils.open(dialogReset))
                         progression: true
+                    }
+                    HislogComponent{
+                        id:log
                     }
                     ResetComponent{
                         id:dialogReset

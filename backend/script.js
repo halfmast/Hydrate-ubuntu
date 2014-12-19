@@ -43,6 +43,31 @@ function lvl(current, need, lvl){
             return lvl;
         } else {return 100}
 }
+//---- History ----//
+//gets the current day number from date
+function checkDay(){
+    var day = new Date().getDate();
+    //console.log("Js day = " + day);
+    return day;
+}
+
+//gets the shorten month name for date
+function month(){
+    var d = new Date();
+    var n = d.getMonth();
+    var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var m = month[n];
+    console.log("Js month is " + m)
+    return m;
+}
+/*function deleteFirstPlayer(player) {
+var tempContents = {};
+tempContents = playerInfo.contents;
+var index = tempContents.players.indexOf(player);
+tempContents.players.splice(0, 1);
+playerInfo.contents = tempContents;
+}*/
+
 
 
 //---- Settings ----//
