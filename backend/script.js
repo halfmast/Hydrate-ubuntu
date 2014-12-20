@@ -1,5 +1,29 @@
+//---- welcome screen ----//
+function label (metrics, current) {
+    if (metrics === 0) {
+        //imperial mode
+        return current + " Oz "
+    } else if ( metrics === 1 && current >= 1000 ) {
+        // metric mode water drank more than liter
+        return (current/1000) + " L "
+    } else {
+        // metric mode on drank less than liter
+        return current + " mL "
+    }
+}
+function emptyLabel (metrics) {
+    if (metrics === 0) {
+        //imperial mode
+        return " Oz "
+    } else{
+        // metric mode water drank more than liter
+        return " L "
+    }
+}
+
 
 //----Main Page----//
+
 
 //generates the percentage on the top square
 function percentage(current,needed) {
@@ -11,6 +35,7 @@ function text(current, needed, metrics) {
     if(metrics === 1 && needed >= 1000 && current >= 1000){
         //metric on needed and current grater are in liters
         return (current/1000) + " L / " + (needed/1000) + " L";
+
     } else if(metrics === 1 && needed >=1000){
         //if metrics is on and needed is in liters but current is milliters
         return current + " mL / " + (needed/1000) + " L";
@@ -33,7 +58,7 @@ function addWater(met, imp, metrics, current){
 }
 //water lvl height
 function lvl(current, need, lvl){
-    console.log("pre" + lvl)
+    //console.log("pre" + lvl)
     if (lvl <= 100 && current === 0) {
         current = 1;
         lvl = ((current / need ));
@@ -57,7 +82,7 @@ function month(){
     var n = d.getMonth();
     var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var m = month[n];
-    console.log("Js month is " + m)
+    //console.log("Js month is " + m)
     return m;
 }
 /*function deleteFirstPlayer(player) {

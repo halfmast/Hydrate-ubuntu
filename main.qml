@@ -2,23 +2,23 @@ import QtQuick 2.0
 import Ubuntu.Components 1.1
 import U1db 1.0 as U1db
 import Ubuntu.Components.Popups 1.0
+import Ubuntu.Layouts 0.1
+import UserMetrics 0.1
 import "backend/script.js" as Logic
 import "components"
-import Ubuntu.Components.ListItems 0.1 as ListItem
-import Ubuntu.Layouts 0.1
 
 
 MainView {
     objectName: "mainView"
-    applicationName: "com.ubuntu.developer.kevinfeyder.drops"
+    applicationName: "com.ubuntu.developer.kevinfeyder.hydrate"
     useDeprecatedToolbar: false
     backgroundColor: "#f9f9f9"
-    width: units.gu(80)
+    width: units.gu(45)
     height: units.gu(75)
 
     U1db.Database {
         id:hydrateSave;
-        path: "math.u1db"
+        path: "water.u1db"
     }
     U1db.Document {
       id: userProgress
@@ -34,7 +34,7 @@ MainView {
       database: hydrateSave
       docId: "uSet"
       create: true
-      defaults: { "metrics": 1, "day": 0, "goals": 0 }
+      defaults: { "metrics": 0, "day": 0, "goals": 0 }
     }
 
     //--- history database ---//
@@ -52,15 +52,20 @@ MainView {
         }
     }
 
+    //---- welcome screen ---- //
+    Metric {
+           id: waterMetric
+           name: "water-metrics"
+           format: Logic.label(userSettings.contents.metrics, userProgress.contents.current) + "of water consumed today"
+           emptyFormat: "No" + Logic.emptyLabel(userSettings.contents.metrics) + "consumed today"
+           domain: "com.ubuntu.developer.KevinFeyder.hydrate"
+            }
+
+
     Item {
         id:cartoon
-        /*states: State {
-            name: "anime"
-            AnchorChanges { target: ui; anchors.bottom: parent.bottom}
-        }*/
         transitions: Transition {
             ParallelAnimation {
-            //AnchorAnimation { easing.type:Easing.OutQuart; duration: 1000}
             NumberAnimation  { target:ui; property: "opacity"; to: .8; duration: 900 }
             NumberAnimation { targets: shape; properties: "opacity"; to:.8; duration: 900 }
             }
@@ -101,7 +106,7 @@ MainView {
                 userSettings.contents = {"metrics": userSettings.contents.metrics, "day": Logic.checkDay(), "goals": userSettings.contents.goals};
             } else {
                 //adding to history
-                if(playerInfo.contents.players.length <= 4){
+                if(playerInfo.contents.players.length <= 30){
                 check.storePlayer({"count":Logic.month() + " " + userSettings.contents.day, "progress":Logic.text(userProgress.contents.current,userProgress.contents.needed, userSettings.contents.metrics)})
                 }else{
                     check.deleteFirstPlayer()
@@ -119,7 +124,7 @@ MainView {
 
     PageStack{
         id:stack
-        Component.onCompleted: stack.push(home)//push(home)
+        Component.onCompleted: stack.push(home)
 
 
 
@@ -128,13 +133,21 @@ MainView {
             width:parent.width;
             title: i18n.tr("Hydrate")
             head.actions: Action {
+                id:settingCog
                 iconName: "settings"
                 onTriggered: stack.push(settings);
             }
             bottomEdgeTitle: "History"
+            bottomEdgePageComponent:Page {
+                        id:hiscore
+                        title: i18n.tr("History")
+                        //visible: false;
+                        History{
+                            width:parent.width
+                        }
+                    }
 
             Loader { id: loading }
-            bottomEdgePageComponent:loading.sourceComponent = crom;
             bottomEdgeEnabled: if(greenButton.width > 0){false}else{true}
 
             Layouts {
@@ -236,7 +249,6 @@ MainView {
                 }
             }//end of greenButton
         }
-
             Rectangle {
                 id:waterLvl
                 z:-1 //keeps water backdrop behind ui elements
@@ -254,20 +266,6 @@ MainView {
         SettingComponent{
             id:settings
         }
-        Component{
-            id:crom
-        Page {
-            id:hiscore
-            title: i18n.tr("History")
-            visible: false;
-            History{
-                width:parent.width
-            }
-        }
-        }
-
-
-
     }
 }
 

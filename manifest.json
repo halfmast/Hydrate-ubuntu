@@ -1,7 +1,7 @@
 {
     "architecture": "all",
     "description": "A simple daily water intake tracker",
-    "framework": "ubuntu-sdk-14.10-dev2",
+    "framework": "ubuntu-sdk-14.10",
     "hooks": {
         "app": {
             "apparmor": "app.apparmor",

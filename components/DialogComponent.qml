@@ -23,6 +23,7 @@ Component {
                         level: userProgress.contents.level, needed: userProgress.contents.needed}
                     userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
                         weight: userProgress.contents.weight, needed: userProgress.contents.needed}
+                     waterMetric.increment(300)
                     PopupUtils.close(dialog);
                 }
             }
@@ -36,6 +37,7 @@ Component {
                         level: userProgress.contents.level, needed: userProgress.contents.needed}
                     userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
                         weight: userProgress.contents.weight, needed: userProgress.contents.needed}
+                     waterMetric.increment(400)
                     PopupUtils.close(dialog);
                 }
                     }
@@ -49,6 +51,7 @@ Component {
                         level: userProgress.contents.level, needed: userProgress.contents.needed}
                     userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
                         weight: userProgress.contents.weight, needed: userProgress.contents.needed}
+                     waterMetric.increment(500)
                     PopupUtils.close(dialog);
                 }
                     }
@@ -62,6 +65,7 @@ Component {
                         level: userProgress.contents.level, needed: userProgress.contents.needed}
                     userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
                         weight: userProgress.contents.weight, needed: userProgress.contents.needed}
+                     waterMetric.increment(600)
                     PopupUtils.close(dialog);
                 }
             }
@@ -75,6 +79,7 @@ Component {
                         level: userProgress.contents.level, needed: userProgress.contents.needed}
                     userProgress.contents = {current: userProgress.contents.current,level:Logic.lvl(userProgress.contents.current, userProgress.contents.needed, userProgress.contents.level),
                         weight: userProgress.contents.weight, needed: userProgress.contents.needed}
+                     waterMetric.increment(700)
                     PopupUtils.close(dialog);
                 }
             }

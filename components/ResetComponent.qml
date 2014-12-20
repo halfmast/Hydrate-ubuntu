@@ -18,6 +18,7 @@ Component {
                  onClicked: {
                      userProgress.contents = {current: 0, weight:userProgress.contents.weight, level: 0, needed: userProgress.contents.needed, mL: 0}
                      userSettings.contents = { metrics:userSettings.contents.metrics, "day": 0, "goals": 1 }
+                     waterMetric.update(0)
                      PopupUtils.close(resetDialog)
                      stack.pop(home)
                      //start.startupFunction()

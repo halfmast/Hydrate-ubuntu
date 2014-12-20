@@ -16,7 +16,7 @@ Page {
         iconName: "ok"
         onTriggered: {
             place.holder = userProgress.contents.weight
-            userSettings.contents = {metrics: unitOption.selectedIndex, goals: goalOption.selectedIndex}
+            userSettings.contents = {metrics: unitOption.selectedIndex, goals: goalOption.selectedIndex, day: userSettings.contents.day}
             userProgress.contents = {level:0,current: 0, weight: Logic.save(weightText.text, place.holder),needed: Logic.waterNeeded(weightText.text, userSettings.contents.goals, userSettings.contents.metrics),mL:0}
             weightText.placeholderText = Logic.lorem(unitOption.selectedIndex, goalOption.selectedIndex, userProgress.contents.weight)
             stack.pop(home);
