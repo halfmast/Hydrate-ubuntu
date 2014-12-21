@@ -13,7 +13,7 @@ MainView {
     applicationName: "com.ubuntu.developer.kevinfeyder.hydrate"
     useDeprecatedToolbar: false
     backgroundColor: "#f9f9f9"
-    width: units.gu(45)
+    width: units.gu(100)
     height: units.gu(75)
 
     U1db.Database {
