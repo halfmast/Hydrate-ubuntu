@@ -8,19 +8,40 @@ Component {
          id: dialogReset
          Dialog {
              id: resetDialog
-             title: "Reset Progress"
-             text: "Deletes your current progress for the day"
+             title: "Reset"
+             text: "Deletes your progress or restore to default"
+             function deletePlayer() {
+             var tempContents = {};
+             tempContents = playerInfo.contents;
+             var index = tempContents.players.indexOf();
+             tempContents.players.splice(0, 31);
+             playerInfo.contents = tempContents;
+             }
 
              Button {
                  id: resetbutton
                  text: "Reset"
-                 color: "#57a5bf"
+                 color: "#72BFCC"
                  onClicked: {
                      userProgress.contents = {current: 0, weight:userProgress.contents.weight, level: 0, needed: userProgress.contents.needed, mL: 0}
                      userSettings.contents = { metrics:userSettings.contents.metrics, "day": 0, "goals": 1 }
                      waterMetric.update(0)
                      PopupUtils.close(resetDialog)
                      stack.pop(home)
+                     //start.startupFunction()
+                 }
+             }
+             Button {
+                 id: restorebutton
+                 text: "Restore To Default"
+                 color:"#57a5bf"
+                 onClicked: {
+                     userProgress.contents = {current: 0, weight:userProgress.contents.weight, level: 0, needed: userProgress.contents.needed, mL: 0}
+                     userSettings.contents = { "metrics":1, "day": 0, "goals": 1 }
+                     waterMetric.update(0)
+                     deletePlayer();
+                     PopupUtils.close(resetDialog)
+                     //stack.pop(settings)
                      //start.startupFunction()
                  }
              }
