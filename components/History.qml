@@ -6,9 +6,12 @@ import "../backend/script.js" as Logic
 
 
     Item{
+        width:parent.height
+        height:parent.height
         Column {
             id:col
             spacing: units.gu(1)
+            clip:true
             anchors {
                 margins: units.gu(2)
                 fill: parent
