@@ -5,4 +5,8 @@ Icon=hydrate-app.png
 Terminal=false
 Type=Application
 X-Ubuntu-Touch=true
+X-Ubuntu-Splash-Image=splash2.png
+X-Ubuntu-Splash-Color-Header=#8DD9D9
+X-Ubuntu-Splash-Color=#72BFCC
+X-Ubuntu-Splash-Color-Footer=#57a5bf
 
