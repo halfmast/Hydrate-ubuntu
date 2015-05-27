@@ -15,11 +15,17 @@ Page {
     head.actions: Action {
         iconName: "ok"
         onTriggered: {
-            place.holder = userProgress.contents.weight
-            userSettings.contents = {metrics: unitOption.selectedIndex, goals: goalOption.selectedIndex, day: userSettings.contents.day}
-            userProgress.contents = {level:0,current: 0, weight: Logic.save(weightText.text, place.holder),needed: Logic.waterNeeded(weightText.text, userSettings.contents.goals, userSettings.contents.metrics),mL:0}
-            weightText.placeholderText = Logic.lorem(unitOption.selectedIndex, goalOption.selectedIndex, userProgress.contents.weight)
-            stack.pop(home);
+            if(weightText.text === ""){
+                warningBox.height = units.gu(5);
+                warningBox.opacity = 1;
+            }else{
+                place.holder = userProgress.contents.weight
+                userSettings.contents = {metrics: unitOption.selectedIndex, goals: goalOption.selectedIndex, day: userSettings.contents.day}
+                userProgress.contents = {level:0,current: 0, weight: Logic.save(weightText.text, place.holder),needed: Logic.waterNeeded(weightText.text, userSettings.contents.goals, userSettings.contents.metrics),mL:0}
+                weightText.placeholderText = Logic.lorem(unitOption.selectedIndex, goalOption.selectedIndex, userProgress.contents.weight)
+                stack.pop(home);
+                console.log(weightText)
+            }
         }
     }
     head.backAction: Action {
@@ -41,6 +47,16 @@ Page {
                 id:col
                 width: parent.width
                 anchors.centerIn: parent
+
+                ListItem.SingleValue{
+                    id:warningBox
+                    text:"Please fill in water goal text field"
+                    opacity:0;
+                    height:units.gu(0)
+                    Behavior on opacity { NumberAnimation { duration: UbuntuAnimation.FastDuration} }
+                    Behavior on height { NumberAnimation { duration: UbuntuAnimation.FastDuration} }
+                    showDivider: false
+                }
 
                 ListItem.SingleValue{
                     id:firstInput
@@ -101,7 +117,7 @@ Page {
                         progression: true
                     }
                     ListItem.Standard {
-                        text: "Reset current progress"
+                        text: "Reset progress"
                         onClicked: (PopupUtils.open(dialogReset))
                         progression: true
                     }
