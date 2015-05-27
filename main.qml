@@ -13,7 +13,7 @@ MainView {
     applicationName: "com.ubuntu.developer.kevinfeyder.hydrate"
     useDeprecatedToolbar: false
     backgroundColor: "#f9f9f9"
-    width: units.gu(100)
+    width: units.gu(45)
     height: units.gu(75)
 
     U1db.Database {
@@ -64,14 +64,18 @@ MainView {
 
     Item {
         id:cartoon
+        states: State {
+                    name: "anime"
+                    AnchorChanges { target: ui; anchors.bottom: parent.bottom }
+                }
         transitions: Transition {
-            ParallelAnimation {
-            NumberAnimation  { target:ui; property: "opacity"; to: .8; duration: 900 }
-            NumberAnimation { targets: shape; properties: "opacity"; to:.8; duration: 900 }
-            }
+                ParallelAnimation {
+                    NumberAnimation  { target:ui; property: "opacity"; to: .8; easing.type: Easing.InSine; duration: 1000 }
+                    NumberAnimation { targets: shape; properties: "opacity"; to:.8; easing.type: Easing.InSine; duration: 1000 }
+                }
         }
         Component.onCompleted: cartoon.state = "anime";
-        }
+     }
 
     Item {
         Timer {
@@ -135,7 +139,7 @@ MainView {
             head.actions: Action {
                 id:settingCog
                 iconName: "settings"
-                onTriggered: stack.push(settings);
+                onTriggered:stack.push(settings);
             }
             bottomEdgeTitle: "History"
             bottomEdgePageComponent:Page {
@@ -216,7 +220,7 @@ MainView {
                         ButtonComponent{
                                         id:ui
                                         opacity: 0;
-                                        //anchors.top: parent.top;
+                                        anchors.top: parent.top;
                                     }
                                     DialogComponent{
                                         id:buttons
@@ -249,6 +253,7 @@ MainView {
                 }
             }//end of greenButton
         }
+
             Rectangle {
                 id:waterLvl
                 z:-1 //keeps water backdrop behind ui elements
@@ -256,8 +261,8 @@ MainView {
                     GradientStop { position: 0.0; color: "#8DD9D9" }
                     GradientStop { position: 1.0; color: "#57a5bf" }
                 }
-                Behavior on height { NumberAnimation { easing.type: Easing.OutBack; duration: 1000} }
-                height:userProgress.contents.level*home.height;
+                Behavior on height { NumberAnimation { easing.type: Easing.OutSine; duration: 1000} }
+                height:cartoon.state === "anime" ? userProgress.contents.level*home.height : home.height;
                 width:parent.width
                 anchors.bottom:parent.bottom;
             }
